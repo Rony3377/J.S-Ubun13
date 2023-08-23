@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+    <style>
+      #box1 {
+        background-image: linear-gradient(
+          135deg,
+          rgb(189, 112, 189) 50%,
+          rgb(166, 97, 206) 25%,
+          skyblue
+        );
+      }
+
+      img {
+        width: 100px;
+      }
+      main img {
+        width: 140px;
+        hight: 150px;
+
+        filter: blur(0px) sepia(0);
+      }
+      .arrow {
+        background-image: url(aro.png);
+        filter: blur(1px) sepia(1);
+      }
+
+      main img:hover {
+        filter: blur(1px) sepia(1);
+        width: 200px;
+        hight: 200px;
+      }
+    </style>
+  </head>
+
+  <body id="box1"></body>
+</html>
+<script>
+  /* verbendung mit HTML */
+
+  const e = document.getElementById("box1");
+
+  /* Erstellt einen eigenständigen HTML-Element wie zb hr, br, img */
+
+  function singleElement(tag) {
+    return `<${tag}>`;
+  }
+
+  /* Erstellt ein HTML Block-Element wie zb zb hr, br, img mit zwei Attributen */
+
+  function singleElementEx(tag, attr) {
+    return `<${tag} ${attr[0].name} = "${attr[0].wert}" ${attr[1].name} = "${attr[1].wert}" />`;
+  }
+
+  /* Erstellt ein HTML Block-Element wie zb div oder p */
+
+  function blockElement(tag, wert) {
+    return `<${tag}>${wert}</${tag}>`;
+  }
+
+  /* Erstellt ein HTML Block-Element wie zb div oder p mit einem Attribut */
+
+  function blockElementEx(tag, wert, attr) {
+    return `<${tag} ${attr[0]} = "${attr[1]}">${wert}</${tag}>`;
+  }
+
+  /* Erstellt ein HTML Block-Element wie zb div oder p mit zwei Attribut */
+
+  function blockElementEx2(tag, wert, attr) {
+    return `<${tag} ${attr[0].name} = "${attr[0].wert}" ${attr[1].name} = "${attr[1].wert}">${wert}</${tag}>`;
+  }
+  /* Erstellt ein HTML Block-Element wie zb div oder p mit zwei Attribut */
+  function blockElementExMitArrayJSON(tag, wert, attr) {
+    let s = "";
+    // *** //
+    for (let x = 0; x < wert.length; x++) {
+      s += `<${tag}>${wert[x].feld1} ${wert[x].feld2}</${tag}>`;
+    }
+    // *** //
+    return `<${tag} ${attr[0]} = "${attr[1]}">${s}</${tag}>`;
+  }
+  /* Erstellt ein HTML Block-Element wie zb div oder pmit zei wert */
+  function blockElementMit2Werte(tag, wert1, wert2) {
+    return `<${tag}>${wert1} ${wert2}</${tag}>`;
+  }
+
+  /* HTML-Inhalt einfugen*/
+  /* header Erstellen  */
+
+  e.innerHTML += blockElementEx(
+    "header",
+    /* erst div start  */
+    blockElementEx(
+      "div",
+      singleElementEx("img", [
+        {
+          name: "src",
+          wert:
+            "https://www.alamy.de/aggregator-api/download?url=https://c8.alamy.com/compde/c49y89/agypten-kairo-stadt-von-nil-mit-opernhaus-im-vordergrund-in-der-abenddammerung-c49y89.jpg"
+        },
+        {
+          name: "style",
+          wert: "width:800px;hight:200px;"
+        }
+      ]),
+      []
+    ) +
+      /* erst div ende  */
+      /* zweite div start  */
+      blockElementEx(
+        "div",
+        //br
+        singleElement("br") +
+          //ol
+          blockElementEx(
+            "ol",
+            //li1
+            blockElementEx(
+              "li",
+              //li1 table
+              blockElementEx(
+                "table",
+                //li1 table tr +3th
+                blockElement(
+                  "tr",
+                  blockElement("th", "bild") +
+                    blockElement("th", "text") +
+                    blockElement("th", "bild")
+                ) +
+                  //li1 table tr +3td
+                  blockElement(
+                    "tr",
+                    //td1
+                    blockElement(
+                      "td",
+                      singleElementEx("img", [
+                        {
+                          name: "src",
+                          wert:
+                            "https://img.welt.de/img/testgpr/seo/mobile159542352/9242505427-ci102l-w1024/4-jpg.jpg"
+                        },
+                        {
+                          name: "style",
+                          wert: "width:300px;hight:100px;"
+                        }
+                      ])
+                    ) +
+                      //td2
+                      blockElement(
+                        "td",
+                        blockElementEx("a", "portugal", ["href", "#ziel"])
+                      ) +
+                      //td3
+                      blockElement(
+                        "td",
+                        singleElementEx("img", [
+                          {
+                            name: "src",
+                            wert:
+                              "https://welt-der-wunder.s3.eu-central-1.amazonaws.com/user_upload/Artikel/03_Travel_Outdoor/Portugal/8_Portugal_Algaven_iStock-pkazmierczak.jpg"
+                          },
+                          {
+                            name: "style",
+                            wert: "width:300px;hight:100px;"
+                          }
+                        ])
+                      )
+                  ),
+
+                ["style", "background-color: rgba(29, 88, 164, 0.196);"]
+              ),
+              //table ende
+              []
+            ) +
+              //li1 ende
+              //li2 start
+              blockElementEx(
+                "li",
+                //li2 table
+                blockElementEx(
+                  "table",
+                  //li2 table tr +3th
+                  blockElement(
+                    "tr",
+                    blockElement("th", "bild") +
+                      blockElement("th", "text") +
+                      blockElement("th", "bild")
+                  ) +
+                    //li2 table tr +3td
+                    blockElement(
+                      "tr",
+                      //td1
+                      blockElement(
+                        "td",
+                        singleElementEx("img", [
+                          {
+                            name: "src",
+                            wert:
+                              "https://rp-online.de/imgs/32/1/1/3/8/2/6/4/5/tok_506f3d7c2957e95364d1b60d62b14776/w2800_h1980_x1500_y1061_tmnbd_dpa_1492680051B688C9-f0785888cafab806.jpg"
+                          },
+                          {
+                            name: "style",
+                            wert: "width:300px;hight:100px;"
+                          }
+                        ])
+                      ) +
+                        //td2
+                        blockElement(
+                          "td",
+                          blockElementEx("a", "Grichland", ["href", "#ziel"])
+                        ) +
+                        //td3
+                        blockElement(
+                          "td",
+                          singleElementEx("img", [
+                            {
+                              name: "src",
+                              wert:
+                                "https://img.welt.de/img/testgpr/seo/mobile159542361/3302504247-ci102l-w1024/9-jpg.jpg"
+                            },
+                            {
+                              name: "style",
+                              wert: "width:290px;hight:100px;"
+                            }
+                          ])
+                        )
+                    ),
+
+                  ["style", "background-color: rgba(29, 88, 164, 0.196);"]
+                ),
+                //table ende
+                []
+              ) +
+              //li2 ende
+              //li3 start
+              blockElementEx(
+                "li",
+                //li3 table
+                blockElementEx(
+                  "table",
+                  //li3 table tr +3th
+                  blockElement(
+                    "tr",
+                    blockElement("th", "bild") +
+                      blockElement("th", "text") +
+                      blockElement("th", "bild")
+                  ) +
+                    //li3 table tr +3td
+                    blockElement(
+                      "tr",
+                      //td1
+                      blockElement(
+                        "td",
+                        singleElementEx("img", [
+                          {
+                            name: "src",
+                            wert:
+                              "https://4.bp.blogspot.com/-xTJEIus9lDA/WftiwlNlIxI/AAAAAAAFoEM/9mTyuB8sW_43v1FvjtnkxAr86-3cK7HagCLcBGAs/s1600/jpg2.jpg"
+                          },
+                          {
+                            name: "style",
+                            wert: "width:300px;hight:100px;"
+                          }
+                        ])
+                      ) +
+                        //td2
+                        blockElement(
+                          "td",
+                          blockElementEx("a", "deutschland", ["href", "#ziel"])
+                        ) +
+                        //td3
+                        blockElement(
+                          "td",
+                          singleElementEx("img", [
+                            {
+                              name: "src",
+                              wert:
+                                "https://static.lichterderwelt.de/wp-content/uploads/2020/05/reiseziele-deutschland.jpg"
+                            },
+                            {
+                              name: "style",
+                              wert: "width:280px;hight:100px;"
+                            }
+                          ])
+                        )
+                    ),
+
+                  ["style", "background-color: rgba(29, 88, 164, 0.196);"]
+                ),
+                //table ende
+                []
+              ) +
+              //li3 ende
+              //li4 start
+              blockElementEx(
+                "li",
+                //li4 table
+                blockElementEx(
+                  "table",
+                  //li4 table tr +3th
+                  blockElement(
+                    "tr",
+                    blockElement("th", "bild") +
+                      blockElement("th", "text") +
+                      blockElement("th", "bild")
+                  ) +
+                    //li4 table tr +3td
+                    blockElement(
+                      "tr",
+                      //td1
+                      blockElement(
+                        "td",
+                        singleElementEx("img", [
+                          {
+                            name: "src",
+                            wert:
+                              "https://reisespatz.de/wp-content/uploads/2020/05/reiseziele-oesterreich.jpg"
+                          },
+                          {
+                            name: "style",
+                            wert: "width:290px;hight:100px;"
+                          }
+                        ])
+                      ) +
+                        //td2
+                        blockElement(
+                          "td",
+                          blockElementEx("a", "osterreisch", ["href", "#ziel"])
+                        ) +
+                        //td3
+                        blockElement(
+                          "td",
+                          singleElementEx("img", [
+                            {
+                              name: "src",
+                              wert:
+                                "https://www.ramnicuvalceaweek.ro/wp-content/uploads/2017/03/lac-generic.jpg"
+                            },
+                            {
+                              name: "style",
+                              wert: "width:300px;hight:100px;"
+                            }
+                          ])
+                        )
+                    ),
+
+                  ["style", "background-color: rgba(29, 88, 164, 0.196);"]
+                ),
+                //table ende
+                []
+              ) +
+              //li4 ende
+              //li5 ende
+              blockElementEx(
+                "li",
+                //li5 table
+                blockElementEx(
+                  "table",
+                  //li5 table tr +3th
+                  blockElement(
+                    "tr",
+                    blockElement("th", "bild") +
+                      blockElement("th", "text") +
+                      blockElement("th", "bild")
+                  ) +
+                    //li5 table tr +3td
+                    blockElement(
+                      "tr",
+                      //td1
+                      blockElement(
+                        "td",
+                        singleElementEx("img", [
+                          {
+                            name: "src",
+                            wert:
+                              "https://www.travelbook.de/data/uploads/2021/01/gettyimages-1145042281_1611656449-700x467.jpeg"
+                          },
+                          {
+                            name: "style",
+                            wert: "width:300px;hight:100px;"
+                          }
+                        ])
+                      ) +
+                        //td2
+                        blockElement(
+                          "td",
+                          blockElementEx("a", "Thailand", ["href", "#ziel"])
+                        ) +
+                        //td3
+                        blockElement(
+                          "td",
+                          singleElementEx("img", [
+                            {
+                              name: "src",
+                              wert:
+                                "https://i.pinimg.com/originals/55/ec/02/55ec02deb4522df45cb051c5bbf03a08.jpg"
+                            },
+                            {
+                              name: "style",
+                              wert:
+                                "width:300px;hight:100px; background-image: url(aro.png);filter: blur(0px) sepia(0);"
+                            }
+                          ])
+                        )
+                    ),
+
+                  ["style", "background-color: rgba(29, 88, 164, 0.196);"]
+                ),
+                //table ende
+                []
+              ),
+            ["style", "list-style-type: none;"]
+          ) +
+          //ol ende
+          singleElement("br"),
+        []
+      ) +
+      /* zweite div ende  */
+      /* dritte div start  */
+      blockElementEx(
+        "div",
+        blockElementEx("label", "label text", []) +
+          singleElementEx("input", [
+            {
+              name: "id",
+              wert: "serch"
+            },
+            {
+              name: "type",
+              wert: "date"
+            }
+          ]) +
+          singleElement("hr") +
+          blockElementEx("label", "label text", []) +
+          singleElementEx("input", [
+            {
+              name: "id",
+              wert: "serch"
+            },
+            {
+              name: "type",
+              wert: "range"
+            }
+          ]) +
+          singleElement("hr"),
+        []
+      ),
+    /* dritte div ende  */
+    []
+  );
+  /* header ende  */
+  /* main ertelen */
+  e.innerHTML += blockElementEx(
+    "main",
+    //div1 start
+    blockElementEx(
+      "div",
+      //div in div1
+      blockElement(
+        "div",
+        //img1
+        singleElementEx("img", [
+          {
+            name: "src",
+            wert:
+              "https://mirfak-travel.com/wp-content/uploads/2018/05/Lella_Baya_Thalasso_16-1.jpg"
+          },
+          {
+            name: "alt",
+            wert: "text"
+          }
+        ]) +
+          //img2
+          singleElementEx("img", [
+            {
+              name: "src",
+              wert:
+                "https://www.mein-aegypten.com/sites/default/files/styles/large/public/Luxor%20bei%20Nacht-01.jpg?itok=SXdV8n81"
+            },
+            {
+              name: "style",
+              wert: ""
+            }
+          ]) +
+          //img3
+          singleElementEx("img", [
+            {
+              name: "src",
+              wert:
+                "https://cdn0.scrvt.com/1d269d6df8ffa5293567a253ea58b5c1/930f567dbd894d2f/374f46313ce2/Aegypten_Kairo_Stadtansicht_600x400.jpg"
+            },
+            {
+              name: "alt",
+              wert: "text"
+            }
+          ]) +
+          //img4
+          singleElementEx("img", [
+            {
+              name: "src",
+              wert:
+                "https://www.urlaubstracker.de/wp-content/uploads/2019/03/aegypten-sharm-el-sheikh-sonnenschirme.jpg"
+            },
+            {
+              name: "style",
+              wert: ""
+            }
+          ]) +
+          //img5
+          singleElementEx("img", [
+            {
+              name: "src",
+              wert:
+                "https://media-cdn.holidaycheck.com/w_1280,h_720,c_fill,q_80/ugc/images/1c1d8d8d-0581-3fff-ad30-1d6dcdbb88f6"
+            },
+            {
+              name: "alt",
+              wert: "text"
+            }
+          ]) +
+          //img6
+          singleElementEx("img", [
+            {
+              name: "src",
+              wert:
+                "https://www.penny-reisen.de/pibe-media/its/hotel/YH0141_W21_7.jpg?w=712&h=481"
+            },
+            {
+              name: "alt",
+              wert: "text"
+            }
+          ]) +
+          //img7
+          singleElementEx("img", [
+            {
+              name: "src",
+              wert:
+                "https://i.content4travel.com/cms/img/u/kraj/1/sharm_el_sheikh_1.jpg?version=38"
+            },
+            {
+              name: "alt",
+              wert: "text"
+            }
+          ]) +
+          //img8
+          singleElementEx("img", [
+            {
+              name: "src",
+              wert:
+                "https://www.ibisegypttours.com/media/k2/galleries/2674/10.jpg"
+            },
+            {
+              name: "alt",
+              wert: "text"
+            }
+          ]),
+        []
+      ) +
+        blockElement(
+          "p",
+          "Ägypten pur - Reisen in die spannendsten Länder der Erde"
+        ) +
+        singleElement("hr") +
+        blockElementEx("a", "Auswälen", ["href", "#ziel"]),
+      []
+    ) +
+      //div1 ende
+      //div2 start
+      blockElementEx(
+        "div",
+        blockElementEx("label", "label text", []) +
+          singleElement("br") +
+          singleElementEx("input", [
+            {
+              name: "id",
+              wert: "serch"
+            },
+            {
+              name: "type",
+              wert: "nummper"
+            }
+          ]) +
+          singleElementEx("input", [
+            {
+              name: "id",
+              wert: "serch"
+            },
+            {
+              name: "type",
+              wert: "date"
+            }
+          ]) +
+          singleElementEx("input", [
+            {
+              name: "id",
+              wert: "serch"
+            },
+            {
+              name: "type",
+              wert: "color"
+            }
+          ]) +
+          blockElement("textarea", " text") +
+          blockElement("button", "klick"),
+        []
+      ) +
+      //div2 ende
+      //div3 start
+      blockElementEx(
+        "div",
+        blockElementEx(
+          "table",
+          blockElementEx(
+            "tr",
+            blockElement("th", "fruhstück") +
+              blockElement("th", "mittagessen") +
+              blockElement("th", "abendessen"),
+            [
+              "style",
+              "background-color: rgba(29, 88, 164, 0.196); border: aquamarine solid 2px;width:690px;display: flex;justify-content: space-between;"
+            ]
+          ) +
+            blockElementEx(
+              "tr",
+              blockElement("td", "mich") +
+                blockElement("td", "fleish") +
+                blockElement("td", "käse"),
+              [
+                "style",
+                "background-color: rgba(29, 88, 164, 0.196); border: aquamarine solid 2px;width:690px;display: flex;justify-content: space-between;"
+              ]
+            ) +
+            blockElementEx(
+              "tr",
+              blockElement("td", "marmelade") +
+                blockElement("td", "gemüse") +
+                blockElement("td", "brot"),
+              [
+                "style",
+                "background-color: rgba(29, 88, 164, 0.196); border: aquamarine solid 2px;width:690px;display: flex;justify-content: space-between;"
+              ]
+            ),
+          []
+        ),
+        []
+      ) +
+      //div3 ende
+      //div4 start
+      blockElementEx(
+        "div",
+        blockElementEx(
+          "ul",
+
+          blockElementEx("li", blockElement("h3", "<u>uberuns</u>"), [
+            "style",
+            "padding: 10px;"
+          ]) +
+            blockElementEx("li", blockElement("h3", "<u>kontakt</u>"), [
+              "style",
+              "padding: 10px;"
+            ]) +
+            blockElementEx("li", blockElement("h3", "<u>adresse</u>"), [
+              "style",
+              "padding: 10px;"
+            ]) +
+            blockElementEx("li", blockElement("h3", "<u>webseite</u>"), [
+              "style",
+              "padding: 10px;"
+            ]),
+          [
+            "style",
+            "list-style-type: none;display: flex;justify-content:space-between;"
+          ]
+        ),
+        []
+      ),
+    //div4 ende
+
+    []
+  );
+  //main ende
+  //footer start
+  e.innerHTML += blockElementEx(
+    "footer",
+    blockElementEx(
+      "div",
+      singleElementEx("img", [
+        {
+          name: "src",
+          wert: "f.png"
+        },
+        {
+          name: "alt",
+          wert: "text"
+        }
+      ]) +
+        singleElementEx("img", [
+          {
+            name: "src",
+            wert: "t.png"
+          },
+          {
+            name: "alt",
+            wert: "text"
+          }
+        ]) +
+        singleElementEx("img", [
+          {
+            name: "src",
+            wert: "i.png"
+          },
+          {
+            name: "alt",
+            wert: "text"
+          }
+        ]) +
+        singleElementEx("img", [
+          {
+            name: "src",
+            wert: "k.png"
+          },
+          {
+            name: "alt",
+            wert: "text"
+          }
+        ]) +
+        singleElementEx("img", [
+          {
+            name: "src",
+            wert: "y.png"
+          },
+          {
+            name: "alt",
+            wert: "text"
+          }
+        ]),
+      ["style", " display: flex;justify-content: space-between;"]
+    ) +
+      singleElement("hr") +
+      blockElementEx(
+        "div",
+        blockElement("h3", "Urlaubsziele") +
+          blockElement(
+            "p",
+            "Auf unserer Liste der beliebtesten Urlaubsziele darf Ägypten natürlich nicht fehlen. In Hurghada oder Sharm el Sheikh gibt es tolle Hotelresorts mit All Inclusive."
+          ) +
+          singleElement("hr") +
+          blockElement(
+            "span",
+            " <small>Die umwerfende Unterwasserwelt könnt Ihr beim Tauchen und Schnorcheln entdecken</small>"
+          ),
+        []
+      ),
+    //footer ende
+    []
+  );
+</script>
